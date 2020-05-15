@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" overflow="hidden" viewBox="0 0 547 195">
+  <defs/>
+  <defs>
+    <linearGradient id="b" x1="455.7" x2="455.7" y1="391.2" y2="416.8" gradientUnits="userSpaceOnUse" spreadMethod="reflect">
+      <stop offset="0" stop-color="#FFF"/>
+      <stop offset="1" stop-color="#FFF"/>
+    </linearGradient>
+    <linearGradient id="c" x1="634.6" x2="634.6" y1="391.2" y2="416.8" gradientUnits="userSpaceOnUse" spreadMethod="reflect">
+      <stop offset="0" stop-color="#FFF"/>
+      <stop offset="1" stop-color="#FFF"/>
+    </linearGradient>
+    <linearGradient id="d" x1="455.7" x2="455.7" y1="468.3" y2="493.9" gradientUnits="userSpaceOnUse" spreadMethod="reflect">
+      <stop offset="0" stop-color="#FFF"/>
+      <stop offset="1" stop-color="#FFF"/>
+    </linearGradient>
+    <linearGradient id="e" x1="455.7" x2="455.7" y1="545.4" y2="571" gradientUnits="userSpaceOnUse" spreadMethod="reflect">
+      <stop offset="0" stop-color="#FFF"/>
+      <stop offset="1" stop-color="#FFF"/>
+    </linearGradient>
+    <clipPath id="a">
+      <path fill-rule="evenodd" d="M366 381h547v195H366z" clip-rule="evenodd"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#a)" transform="translate(-366 -381)">
+    <path fill="none" stroke="#1C6982" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3" d="M375.5 425.5c-2 0-3.5-1.6-3.5-3.5v-14c0-2-1.6-3.5-3.5-3.5 2 0 3.5-1.6 3.5-3.5v-14c0-2 1.6-3.5 3.5-3.5m340 0c2 0 3.5 1.6 3.5 3.5v14c0 2 1.6 3.5 3.5 3.5-2 0-3.5 1.6-3.5 3.5v14c0 2-1.6 3.5-3.5 3.5"/>
+    <path fill="#D73B01" d="M385 387h141v34H385z"/>
+    <path fill="url(#b)" fill-rule="evenodd" d="M455.5 399.3l-.3 1-2.3 6.2h5.1l-2.3-6.2-.2-1zm-.9-1.8h1.8l5.7 14.7h-2l-1.5-4.1h-6.2l-1.5 4.1h-2z"/>
+    <text x="449" y="410.4" fill-opacity="0" font-family="Arial,Arial_MSFontService,sans-serif" font-size="14.7">
+      A
+    </text>
+    <path fill="#107C10" d="M564 387h141v34H564z"/>
+    <path fill="url(#c)" fill-rule="evenodd" d="M632.2 405.4v5.3h2.3c1 0 1.8-.3 2.3-.8.6-.4.9-1 .9-2 0-1.7-1.2-2.5-3.6-2.5zm0-6.3v4.7h1.7c1 0 1.7-.2 2.2-.7.6-.4.9-1 .9-1.9 0-1.4-1-2.1-2.9-2.1zm-1.8-1.6h4.2c1.3 0 2.3.3 3 1a3 3 0 011.2 2.4c0 .8-.3 1.5-.7 2.2-.5.6-1 1-1.9 1.3 1 .1 1.8.5 2.4 1.1.6.7.9 1.5.9 2.5 0 1.3-.5 2.3-1.4 3a5 5 0 01-3.4 1.2h-4.3z"/>
+    <text x="630.4" y="410.4" fill-opacity="0" font-family="Arial,Arial_MSFontService,sans-serif" font-size="14.7">
+      B
+    </text>
+    <path fill="#1C6982" fill-rule="evenodd" d="M755.5 395.8h36v6.6h-36zm0 9.8h36v6.6h-36z"/>
+    <path fill="#D73B01" d="M385 464h141v34H385z"/>
+    <path fill="url(#d)" fill-rule="evenodd" d="M455.5 476.4l-.3 1-2.3 6.2h5.1l-2.3-6.2a6 6 0 01-.2-1zm-.9-1.8h1.8l5.7 14.7h-2l-1.5-4.1h-6.2l-1.5 4h-2z"/>
+    <text x="449" y="487.4" fill-opacity="0" font-family="Arial,Arial_MSFontService,sans-serif" font-size="14.7">
+      A
+    </text>
+    <path fill="#107C10" d="M385 541h141v34H385z"/>
+    <path fill="url(#e)" fill-rule="evenodd" d="M453.2 559.5v5.3h2.4c1 0 1.8-.2 2.3-.7.6-.5.9-1.2.9-2 0-1.7-1.2-2.6-3.6-2.6zm0-6.3v4.8h1.8c1 0 1.7-.3 2.2-.7.6-.5.8-1.1.8-2 0-1.4-.9-2-2.8-2zm-1.7-1.5h4.2c1.3 0 2.3.3 3 .9a3 3 0 011.2 2.4c0 .8-.3 1.6-.7 2.2-.5.6-1.1 1-1.9 1.3 1 .2 1.8.5 2.4 1.2.6.6.9 1.4.9 2.4 0 1.3-.5 2.3-1.4 3a5 5 0 01-3.4 1.3h-4.3z"/>
+    <text x="451.5" y="564.5" fill-opacity="0" font-family="Arial,Arial_MSFontService,sans-serif" font-size="14.7">
+      B
+    </text>
+    <path fill="#1C6982" fill-rule="evenodd" d="M841 413.5c0-4.1 3.1-7.5 7-7.5s7 3.4 7 7.5-3.1 7.5-7 7.5-7-3.4-7-7.5zM898 413.5c0-4.1 3.1-7.5 7-7.5s7 3.4 7 7.5-3.1 7.5-7 7.5-7-3.4-7-7.5zM869 413.5a7.5 7.5 0 1115 0 7.5 7.5 0 01-15 0z"/>
+  </g>
+</svg>
