@@ -1,0 +1,10 @@
+title: Exploring C# 8 New Language Features
+remote_theme: azure-immersion/docs-jekyll-theme
+plugins:
+  - jekyll-sitemap
+  - jekyll-mentions
+  - jemoji
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge

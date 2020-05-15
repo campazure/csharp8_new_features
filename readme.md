@@ -19,7 +19,6 @@ title: 'Exploring C# 8 New Language Features'
 * [C# Member Enhancements](#c-member-enhancements)
 * [Pattern Matching](#pattern-matching)
 * [C# Expression Enhancements](#c-expression-enhancements)
-* [C# Futures](#c-futures)
 
 ## C# Versions
 
@@ -569,7 +568,7 @@ Here, we don't need the room name so the code discards it immediately.
 
 :::
 
-## Demo: Building Complex Classes and Members
+## Demo: Building Classes Using Tuples
 
 ::: notes
 
@@ -783,10 +782,403 @@ Group group = student switch
 };
 ```
 
-## Demo: Implementing Pattern Matching
+## Demo: Parsing, Categorizing, and Handling Data
 
 ::: notes
 
 TBD
 
 :::
+
+## C# Expression Enhancements
+
+### Using Keyword Enhancements
+
+* Using Declarations
+* Using Static
+
+### Using Declarations
+
+* Variable declaration that is disposed at the end of the enclosing scope
+* Removes some of the extra syntax required with a traditional using statement
+
+::: notes
+
+<https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-8#using-declarations>
+
+:::
+
+### Classic Using Statements
+
+```csharp
+using System.IO;
+
+public void ReadContentFromFile()
+{
+    using (var stream = File.OpenRead(@"D:\sys.log"))
+    {
+        // Perform operations here
+    }
+}
+```
+
+### Using Declarations Example
+
+```csharp
+using System.IO;
+
+public void ReadContentFromFile()
+{
+    using var stream = File.OpenRead(@"D:\sys.log")
+    // Perform operations here
+}
+```
+
+::: notes
+
+Disposal occurs at the end of the enclosing scope
+
+:::
+
+### Using Static
+
+* Allows access to static members and child (nested) types without strictly specifying the root type name
+  * Special directive
+  * Typically included at the top of the code file
+
+::: notes
+
+<https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/using-static>
+
+:::
+
+### Statically using Directory Methods
+
+```csharp
+using static System.IO.Directory;
+
+public class Program
+{
+    public bool LogDirectoryAvailable()
+    {
+        return Exists("C:\Logs");
+    }
+}
+```
+
+::: notes
+
+[string System.IO.Directory.Exists](https://docs.microsoft.com/dotnet/api/system.io.directory.exists?view=net-5.0)
+
+:::
+
+### Statically using File Methods
+
+```csharp
+using static System.IO.File;
+
+public class Program
+{
+    public string GetLogContent()
+    {
+        return ReadAllText("C:\Logs\server.txt");
+    }
+}
+```
+
+::: notes
+
+[string System.IO.File.ReadAllText(string filename)](https://docs.microsoft.com/dotnet/api/system.io.file.readalltext?view=net-5.0)
+
+:::
+
+### Statically using Math Methods
+
+```csharp
+using static System.Math;
+
+public class Program
+{
+    public double GetSquare(double number)
+    {
+        return Pow(number, 2);
+    }
+}
+```
+
+::: notes
+
+[double System.Math.Pow(double number, double power)](https://docs.microsoft.com/dotnet/api/system.math.pow?view=net-5.0)
+
+:::
+
+### Async Enumerables
+
+### Foreach with Async
+
+```csharp
+foreach (var device in devices)
+{
+    (double lat, double lon) = await device.GetReadingAsync();
+    Console.WriteLine($"Latitude: {lat} | Longitude: {lon}");
+}
+```
+
+### Implementing IAsyncEnumerable
+
+```csharp
+async IAsyncEnumerable<(double, double)> GetReadingsAsync(IEnumerable<Device> devices)
+{
+    foreach (var device in devices)
+    {
+        yield return await device.GetReadingAsync();
+    }
+}
+```
+
+### Await Foreach
+
+```csharp
+await foreach ((double lat, double lon) in GetReadingsAsync(devices))
+{
+    Console.WriteLine($"Latitude: {lat} | Longitude: {lon}");
+}
+```
+
+### Await Foreach (Entity Framework)
+
+```csharp
+var orders = context.Orders
+    .Where(o => o.Status == OrderStatus.Pending)
+    .OrderByDescending(o => o.SubmittedDate);
+
+await foreach(var order in orders.AsAsyncEnumerable())
+{
+    // Perform logic
+}
+```
+
+### Array Ranges
+
+* Simple syntax to get a subset of an array
+* Syntax can start from the beginning index or end index
+  * You can also use the range operator (..) to create open-ended ranges
+* Can also be used on Span<> and ReadOnlySpan<>
+
+### Sample Array
+
+```csharp
+string[] phonetic =
+{
+    "Alfa", "Bravo", "Charlie", "Delta",
+    "Echo", "Foxtrot", "Golf", "Hotel",
+    "India", "Juliett", "Kilo", "Lima",
+    "November", "Oscar", "Papa", "Quebec",
+    "Romeo", "Sierra", "Tango", "Uniform",
+    "Victor", "Whisket", "X-Ray", "Yankee",
+    "Zulu"
+};
+```
+
+### Closed Range Syntax
+
+```csharp
+string[] m_thru_s = phonetic[12..19];
+
+string[] a_thru_e = phonetic[0..5];
+
+string[] u_thru_z = phonetic[20..26];
+```
+
+### Open-Ended Range Syntax
+
+```csharp
+string[] v_to_end = phonetic[21..];
+
+string[] start_to_g = phonetic[..7];
+```
+
+### End Range Syntax
+
+```csharp
+string z_to_end =
+
+string[] q_to_x = phonetic[^10..^2];
+
+string[] t_to_end = phonetic[^7..];
+
+```
+
+### Range Variables
+
+```csharp
+Range start_to_m = ..13;
+
+string[] frontHalfAlphabet = phonetic[start_to_m];
+
+Range n_to_end = ^13..;
+
+string[] backHalfAlphabet = phonetic[n_to_end];
+```
+
+### Null Coalescing Operator
+
+* Performs a null check and returns an operand based on the result
+  * If the checked value is null, return the right-hand operand
+  * If the checked value is not null, return the left-hand operand
+
+![ ](media/nullcoalesce.svg)
+
+::: notes
+
+<https://docs.microsoft.com/dotnet/csharp/language-reference/operators/null-coalescing-operator>
+
+:::
+
+### Checking for Null Values
+
+```csharp
+int? result = null;
+
+Console.WriteLine(result ?? "No Result");
+
+string response = null;
+
+Console.WriteLine(response ?? String.Empty);
+```
+
+### Ternary Conditional Operator
+
+* Evaluates a Boolean expression and evaluates one of two expressions based on the result
+  * If the checked value is true, evaluates the left-side expression (consequent)
+  * If the checked value is false, evaluates the right-side expression (alternative)
+* Expressions must evaluate to the same type
+* Can be nested multiple times
+
+![ ](media/ternary.svg)
+
+::: notes
+
+<https://docs.microsoft.com/dotnet/csharp/language-reference/operators/conditional-operator>
+
+is this condition true ? yes : no
+
+:::
+
+### Checking Conditions
+
+```csharp
+true ? "Returned Value" : "Not Returned"
+
+bool isAvailable = false;
+bool hasBackup = true;
+
+isAvailable ? "☑☑" : hasBackup ? "❎☑" : "❎❎";
+
+isAvailable ? "☑☑" : (hasBackup ? "❎☑" : "❎❎");
+```
+
+::: notes
+
+The operator is right-associative. That means the last two expressions are equivalent
+
+:::
+
+### Conditional Member Access
+
+* Tests the left-hand operand for null
+  * If null, short-circuits execution and returns null
+  * If not null, perform member access
+* More concise syntax for null checks
+* Can be chained
+  * Will short-circuit on first null value
+
+![ ](media/conditionalmember.svg)
+
+::: notes
+
+<https://docs.microsoft.com/dotnet/csharp/language-reference/operators/null-conditional-operators>
+
+:::
+
+### Conditonally Accessing Properties
+
+```csharp
+string firstName = student?.FirstName;
+
+string firstName = student?.Name?.First;
+
+bool result = student?.Enroll("CSC 100", "Fall 2035");
+```
+
+### Conditional Array Access
+
+* Similar to conditional member access
+* Can be used in a chain with member access
+
+![ ](conditionalarray.svg)
+
+::: notes
+
+<https://docs.microsoft.com/dotnet/csharp/language-reference/operators/null-conditional-operators>
+
+:::
+
+### Conditionally Accessing Index
+
+```csharp
+var student = students?["demo-student-1345"];
+
+var name = students?["demo-student-1345"]?.FirstName
+
+var firstStudent = course?.Students[0]?.Name?.First;
+
+var id = universities?[0].Courses?[0]?.Identifier;
+```
+
+### Null Coalescing Assignment
+
+* Used to assign the right-hand value to the left-hand conditionally
+  * Only if the left-hand currently evaluates to null
+* If left-hand is non-null, the right-hand is not evaluated
+
+![ ](media/nullassignment.svg)
+
+::: notes
+
+<https://docs.microsoft.com/dotnet/csharp/language-reference/operators/null-coalescing-operator>
+
+:::
+
+### Null Coalescing Assignment Example
+
+```csharp
+IEnumerable<int> numbers = null;
+
+numbers ??= Enumerable.Empty<int>();
+
+int count = numbers.Count();
+```
+
+## Demo: Authoring a Useful Library Class
+
+::: notes
+
+TBD
+
+:::
+
+## Wrapping-up
+
+### What we covered
+
+* [C# Versions](#c-versions)
+* [C# Member Enhancements](#c-member-enhancements)
+* [Pattern Matching](#pattern-matching)
+* [C# Expression Enhancements](#c-expression-enhancements)
+
+### Where to learn more
+
+<https://dotnet.microsoft.com/>
+
+## Thank you
