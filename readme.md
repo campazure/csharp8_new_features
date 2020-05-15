@@ -1116,7 +1116,7 @@ bool result = student?.Enroll("CSC 100", "Fall 2035");
 * Similar to conditional member access
 * Can be used in a chain with member access
 
-![ ](conditionalarray.svg)
+![ ](media/conditionalarray.svg)
 
 ::: notes
 
