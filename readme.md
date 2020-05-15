@@ -469,7 +469,7 @@ public static async Task Main(string[] args) =>
 * Types defined in a lightweight syntax
 * Supported for a long time but the syntax was recently improved
 
-![ ](media/tuples.png)
+![ ](media/tuples.svg)
 
 ### Classic Tuple Syntax
 
@@ -547,7 +547,7 @@ Console.WriteLine($"Number: {number}");
   * Equivalent to variables that were never assigned
 * Uses a special character as its name
 
-![ ](media/discards.png)
+![ ](media/discards.svg)
 
 ### Using a Discard with a Tuple
 
